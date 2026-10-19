@@ -24,11 +24,10 @@ public class Usuario extends Pessoa {
         super(nome, cpf, email);
         this.matricula = proximaMatricula++;
         this.MaterialJaEmprestado = new ArrayList<>();
-        this.multa = new Multa(0.0, null, null, null,    true);
+        this.multa = null;
         this.pago = true;
-        this.MaterialEmprestado = new Emprestimo(null, null, null, null);
+        this.MaterialEmprestado = null;
     }
-
     public int getMatricula() {
         return matricula;
     }

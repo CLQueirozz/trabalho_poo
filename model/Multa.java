@@ -55,12 +55,6 @@ public class Multa {
         this.motivo = motivo;
     }
 
-    public void pagarMulta(Multa multa) {
-        multa.setPaga(true);
-        multa.setDataPagamento(java.time.LocalDate.now().toString());
-        multa.setValor(0.0);
-        multa.setMotivo(null);
-        multa.setDataVencimento(null);
-    }
+
     
 }

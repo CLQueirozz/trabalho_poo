@@ -1,5 +1,6 @@
 package model;
 
+
 public class Emprestimo {
     private Usuario usuario;
     private MateriaBiblioteca materia;

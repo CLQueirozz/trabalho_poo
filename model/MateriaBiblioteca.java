@@ -5,9 +5,11 @@ public abstract class MateriaBiblioteca {
     private int codigo;
     private boolean disponibilidade;
 
-    public MateriaBiblioteca(String titulo, int codigo, boolean disponibilidade) {
+    private static int proximoCodigo= 0000;
+
+    public MateriaBiblioteca(String titulo, boolean disponibilidade) {
         this.titulo = titulo;
-        this.codigo = codigo;
+        this.codigo = proximoCodigo++;
         this.disponibilidade = disponibilidade;
     }
 

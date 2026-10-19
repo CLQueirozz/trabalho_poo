@@ -5,8 +5,8 @@ public class Artigo extends MateriaBiblioteca {
     private String journal;
     private int ano;
 
-    public Artigo(String titulo, int codigo, boolean disponibilidade, String autor, String journal, int ano) {
-        super(titulo, codigo, disponibilidade);
+    public Artigo(String titulo, boolean disponibilidade, String autor, String journal, int ano) {
+        super(titulo, disponibilidade);
         this.autor = autor;
         this.journal = journal;
         this.ano = ano;

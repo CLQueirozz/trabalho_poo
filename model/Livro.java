@@ -5,8 +5,8 @@ public class Livro extends MateriaBiblioteca {
     private String editora;
     private String ISBN;
 
-    public Livro(String titulo, int codigo, boolean disponibilidade, String autor, String editora, String ISBN) {
-        super(titulo, codigo, disponibilidade);
+    public Livro(String titulo, boolean disponibilidade, String autor, String editora, String ISBN) {
+        super(titulo, disponibilidade);
         this.autor = autor;
         this.editora = editora;
         this.ISBN = ISBN;

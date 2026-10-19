@@ -26,83 +26,83 @@ public class Biblioteca {
     private void cadastrarMateriais() {
 
 // Livros
-materiais.add(new Livro("O Senhor dos Aneis", 1, true,
+materiais.add(new Livro("O Senhor dos Aneis", true,
         "J.R.R. Tolkien", "HarperCollins", "9788595084759"));
 
-materiais.add(new Livro("1984", 2, true,
+materiais.add(new Livro("1984", true,
         "George Orwell", "Companhia das Letras", "9788535914849"));
 
-materiais.add(new Livro("Dom Casmurro", 3, true,
+materiais.add(new Livro("Dom Casmurro", true,
         "Machado de Assis", "Principis", "9786555520418"));
 
-materiais.add(new Livro("O Pequeno Principe", 4, true,
+materiais.add(new Livro("O Pequeno Principe", true,
         "Antoine de Saint-Exupery", "HarperCollins", "9788595081512"));
 
-materiais.add(new Livro("Harry Potter e a Pedra Filosofal", 5, true,
+materiais.add(new Livro("Harry Potter e a Pedra Filosofal", true,
         "J.K. Rowling", "Rocco", "9788532530783"));
 
-materiais.add(new Livro("O Hobbit", 6, true,
+materiais.add(new Livro("O Hobbit", true,
         "J.R.R. Tolkien", "HarperCollins", "9788595084742"));
 
-materiais.add(new Livro("Orgulho e Preconceito", 7, true,
+materiais.add(new Livro("Orgulho e Preconceito", true,
         "Jane Austen", "Martin Claret", "9788544001820"));
 
-materiais.add(new Livro("Crime e Castigo", 8, true,
+materiais.add(new Livro("Crime e Castigo", true,
         "Fiodor Dostoievski", "Editora 34", "9788573261630"));
 
-materiais.add(new Livro("A Revolucao dos Bichos", 9, true,
+materiais.add(new Livro("A Revolucao dos Bichos", true,
         "George Orwell", "Companhia das Letras", "9788535909555"));
 
-materiais.add(new Livro("Capitaes da Areia", 10, true,
+materiais.add(new Livro("Capitaes da Areia", true,
         "Jorge Amado", "Companhia das Letras", "9788535914061"));
 
-materiais.add(new Livro("Memorias Postumas de Bras Cubas", 11, true,
+materiais.add(new Livro("Memorias Postumas de Bras Cubas", true,
         "Machado de Assis", "Penguin-Companhia", "9788563560150"));
 
-materiais.add(new Livro("A Metamorfose", 12, true,
+materiais.add(new Livro("A Metamorfose", true,
         "Franz Kafka", "Companhia das Letras", "9788535911206"));
 
-materiais.add(new Livro("Cem Anos de Solidao", 13, true,
+materiais.add(new Livro("Cem Anos de Solidao", true,
         "Gabriel Garcia Marquez", "Record", "9788501012074"));
 
-materiais.add(new Livro("A Hora da Estrela", 14, true,
+materiais.add(new Livro("A Hora da Estrela", true,
         "Clarice Lispector", "Rocco", "9788532528546"));
 
-materiais.add(new Livro("Grande Sertao: Veredas", 15, true,
+materiais.add(new Livro("Grande Sertao: Veredas", true,
         "Joao Guimaraes Rosa", "Companhia das Letras", "9788535925692"));
 
-materiais.add(new Livro("Frankenstein", 16, true,
+materiais.add(new Livro("Frankenstein", true,
         "Mary Shelley", "DarkSide Books", "9788566636112"));
 
-materiais.add(new Livro("Dracula", 17, true,
+materiais.add(new Livro("Dracula", true,
         "Bram Stoker", "DarkSide Books", "9788566636341"));
 
-materiais.add(new Livro("A Divina Comedia", 18, true,
+materiais.add(new Livro("A Divina Comedia", true,
         "Dante Alighieri", "Editora 34", "9788573261487"));
 
-materiais.add(new Livro("Sapiens", 19, true,
+materiais.add(new Livro("Sapiens", true,
         "Yuval Noah Harari", "Companhia das Letras", "9788525432186"));
 
-materiais.add(new Livro("Duna", 20, true,
+materiais.add(new Livro("Duna", true,
         "Frank Herbert", "Aleph", "9788576573138"));
 
 
 // Artigos
-materiais.add(new Artigo("A Teoria da Relatividade", 21, true,
+materiais.add(new Artigo("A Teoria da Relatividade", true,
         "Albert Einstein", "Annalen der Physik", 1905));
 
-materiais.add(new Artigo("On the Electrodynamics of Moving Bodies", 22, true,
+materiais.add(new Artigo("On the Electrodynamics of Moving Bodies", true,
         "Albert Einstein", "Annalen der Physik", 1905));
 
-materiais.add(new Artigo("The Structure of DNA", 23, true,
+materiais.add(new Artigo("The Structure of DNA", true,
         "James D. Watson e Francis H. C. Crick",
         "Nature", 1953));
 
-materiais.add(new Artigo("Induced Radioactivity", 24, true,
+materiais.add(new Artigo("Induced Radioactivity", true,
         "Irene Joliot-Curie e Frederic Joliot",
         "Nature", 1934));
 
-materiais.add(new Artigo("A Mathematical Theory of Communication", 25, true,
+materiais.add(new Artigo("A Mathematical Theory of Communication", true,
         "Claude E. Shannon", "Bell System Technical Journal", 1948));
 }
 
@@ -240,11 +240,19 @@ public Usuario buscarUsuarioPorMatricula(int matricula) {
         return null; // Retorna null se o usuário não for encontrado
     }
 
+    public Usuario buscarUsuarioPorCpf(String cpf) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getCpf().equals(cpf)) {
+                return usuario;
+            }
+        }
+        return null; // Retorna null se o usuário não for encontrado
+    }
+
 public void cadastrarUsuario(String nome, String cpf, String email) {
         Usuario novoUsuario = new Usuario(nome, cpf, email);
         usuarios.add(novoUsuario);
-        
-    }
+}
 
 public double calcularMulta(String dataDevolucao) {
 
@@ -279,20 +287,37 @@ public Multa gerarMulta( double valor, String dataVencimento, String dataPagamen
         return usuario;
     }
 
-    public void registrarEmprestimo(Usuario usuario, MateriaBiblioteca material, String dataEmprestimo, String dataDevolucao) {
+    public void registrarEmprestimoLivro(Usuario usuario, Livro livro) {
         if (usuario.getMaterialEmprestado() != null) {
-            System.out.println("O usuário já possui um livro emprestado.");
-            return;
+            throw new IllegalStateException("O usuário já possui um livro emprestado: " + usuario.getMaterialEmprestado().getMateria().getTitulo());
+            
         }
 
-        if (!material.isDisponibilidade()) {
-            System.out.println("O material não está disponível para empréstimo.");
-            return;
+       
+        else {
+                String dataDevolucao = LocalDate.parse(LocalDate.now().toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd")).plusDays(7).format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                Emprestimo emprestimo = new Emprestimo(usuario, livro, LocalDate.now().toString(), dataDevolucao);
+                usuario.setMaterialEmprestado(emprestimo);
+                livro.setDisponibilidade(false);
+
         }
-        else {}
-        Emprestimo emprestimo = new Emprestimo(usuario, material, dataEmprestimo, dataDevolucao);
-        usuario.setMaterialEmprestado(emprestimo);
-        material.setDisponibilidade(false);
+        }
+
+public void registrarEmprestimoArtigo(Usuario usuario, Artigo artigo) {
+        if (usuario.getMaterialEmprestado() != null) {
+            throw new IllegalStateException("O usuário já possui um artigo emprestado: " + usuario.getMaterialEmprestado().getMateria().getTitulo());
+        }
+
+        if (!artigo.isDisponibilidade()) {
+                throw new IllegalStateException("O artigo não está disponível para empréstimo.");
+        }
+        else {
+                String dataDevolucao = LocalDate.parse(LocalDate.now().toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd")).plusDays(7).format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                Emprestimo emprestimo = new Emprestimo(usuario, artigo, LocalDate.now().toString(), dataDevolucao);
+                usuario.setMaterialEmprestado(emprestimo);
+                artigo.setDisponibilidade(false);
+
+        }
         }
     
 
@@ -307,19 +332,17 @@ public Multa gerarMulta( double valor, String dataVencimento, String dataPagamen
         }
 
         if (emprestimo.isAtrasado()) {
-            double valor = calcularMulta(emprestimo.getDataDevolucao());
-            usuario.setDevedor(true);
-            Multa multa = gerarMulta(valor, emprestimo.getDataDevolucao(), null, "Devolução atrasada", false);
-            usuario.setMulta(multa);
-            throw new IllegalStateException("O usuário possui uma multa pendente de R$" + valor + " e não pode devolver o material.");
-            
+                double valor = calcularMulta(emprestimo.getDataDevolucao());
+                usuario.setDevedor(true);
+                Multa multa = gerarMulta(valor, emprestimo.getDataDevolucao(), null, "Devolução atrasada", false);
+                usuario.setMulta(multa);
+                throw new IllegalStateException("O usuário possui uma multa pendente de R$" + valor + " e não pode devolver o material.");
+        
         }
 
-            usuario.setMaterialJaEmprestado(emprestimo);
-            usuario.setMaterialEmprestado(null);
-            
-
-    }
+                usuario.setMaterialJaEmprestado(emprestimo);
+                usuario.setMaterialEmprestado(null);
+}
 
     public void CadastrarLivro(Livro livro) {
         materiais.add(livro);
@@ -329,6 +352,13 @@ public Multa gerarMulta( double valor, String dataVencimento, String dataPagamen
         materiais.add(artigo);
     }
     
+    public void pagarMulta(Multa multa) {
+        multa.setPaga(true);
+        multa.setDataPagamento(java.time.LocalDate.now().toString());
+        multa.setValor(0.0);
+        multa.setMotivo(null);
+        multa.setDataVencimento(null);
+    }
 
 
 }
