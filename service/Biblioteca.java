@@ -256,7 +256,7 @@ public void cadastrarUsuario(String nome, String cpf, String email) {
 
 public double calcularMulta(String dataDevolucao) {
 
-    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     LocalDate dataLimite = LocalDate.parse(dataDevolucao, formato);
     LocalDate hoje = LocalDate.now();
@@ -287,18 +287,14 @@ public Multa gerarMulta( double valor, String dataVencimento, String dataPagamen
         return usuario;
     }
 
-    public void registrarEmprestimoLivro(Usuario usuario, Livro livro) {
+    public void registrarEmprestimoLivro(Usuario usuario, Emprestimo emprestimo) {
         if (usuario.getMaterialEmprestado() != null) {
             throw new IllegalStateException("O usuário já possui um livro emprestado: " + usuario.getMaterialEmprestado().getMateria().getTitulo());
             
         }
-
-       
         else {
-                String dataDevolucao = LocalDate.parse(LocalDate.now().toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd")).plusDays(7).format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-                Emprestimo emprestimo = new Emprestimo(usuario, livro, LocalDate.now().toString(), dataDevolucao);
                 usuario.setMaterialEmprestado(emprestimo);
-                livro.setDisponibilidade(false);
+                emprestimo.getMateria() .setDisponibilidade(false);
 
         }
         }
@@ -312,7 +308,7 @@ public void registrarEmprestimoArtigo(Usuario usuario, Artigo artigo) {
                 throw new IllegalStateException("O artigo não está disponível para empréstimo.");
         }
         else {
-                String dataDevolucao = LocalDate.parse(LocalDate.now().toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd")).plusDays(7).format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                String dataDevolucao = LocalDate.parse(LocalDate.now().toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd")).plusDays(7).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 Emprestimo emprestimo = new Emprestimo(usuario, artigo, LocalDate.now().toString(), dataDevolucao);
                 usuario.setMaterialEmprestado(emprestimo);
                 artigo.setDisponibilidade(false);

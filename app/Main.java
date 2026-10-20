@@ -1,6 +1,7 @@
 package app;
 
 import model.Artigo;
+import model.Emprestimo;
 import model.Livro;
 import model.Usuario;
 import service.Biblioteca;
@@ -9,7 +10,8 @@ import exception.MaterialNaoEncontradoException;
 import exception.MultaInexistenteException;
 import exception.MaterialIndisponiveException;
 
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
@@ -192,7 +194,12 @@ public static void main(String[] args) {
                                                 throw new MaterialIndisponiveException("Livro encontrado: "+ biblioteca.buscarLivroPorTitulo(nomeMaterial).getTitulo()+ " - Indisponível para empréstimo.");
                                         }
                                         else{
-                                        biblioteca.registrarEmprestimoLivro(usuario, livro);
+                                        String DataDevolucao = LocalDate.parse(LocalDate.now().toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd")).plusDays(7).format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                                        LocalDate hoje = LocalDate.now();
+                                        DateTimeFormatter formador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                                        String DataEmprestimo = hoje.format(formador);
+                                        Emprestimo emprestimo = new Emprestimo(usuario, livro, DataEmprestimo, DataDevolucao);
+                                        biblioteca.registrarEmprestimoLivro(usuario, emprestimo);
                                         }
                                 }
                         } else if (tipoMaterial == 2) {

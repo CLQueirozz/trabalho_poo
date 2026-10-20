@@ -19,6 +19,8 @@ public class Emprestimo {
         this.devolvido = false;
     }
 
+    
+
     public Usuario getUsuario() {
         return usuario;
     }
